@@ -15,7 +15,6 @@ import java.net.URL;
 
 
 /**
- *
  * Rename Class to a relevant name Add add relevant facade methods
  */
 public class JokeFacade {
@@ -24,11 +23,11 @@ public class JokeFacade {
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private JokeFacade() {}
-    
-    
+    private JokeFacade() {
+    }
+
+
     /**
-     * 
      * @param _emf
      * @return an instance of this facade class.
      */
@@ -52,32 +51,34 @@ public class JokeFacade {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Accept", "application/json"); // Add this line
-        StringBuilder response = new StringBuilder();
+        try {
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(
+                        connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                return response.toString();
 
-        try{
-        int responseCode = connection.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
             }
-            in.close();
-        } }catch (Exception e){
-             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return response.toString();
-
+        return null;
     }
 
 
-//little comment
-    public DadDTO createDadDTo(String input){
-        return GSON.fromJson(input,DadDTO.class);
+    //little comment
+    public DadDTO createDadDTo(String input) {
+        return GSON.fromJson(input, DadDTO.class);
     }
-    public ChuckDTO createChuckDTO(String input){
-        return GSON.fromJson(input,ChuckDTO.class);
+
+    public ChuckDTO createChuckDTO(String input) {
+        return GSON.fromJson(input, ChuckDTO.class);
     }
 
 }
