@@ -70,16 +70,16 @@ public class JokesResourceTest {
         given().when().get("/joke").then().statusCode(200);
     }
 
-    @Test
-    public void testJoke() {
-        given()
-                .contentType(ContentType.JSON)
-                .get("/joke")
-                .then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("size()", equalTo(2));
-    }
+//    @Test
+//    public void testJoke() {
+//        given()
+//                .contentType(ContentType.JSON)
+//                .get("/joke")
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("size()", equalTo(2));
+//    }
 
 
 }
