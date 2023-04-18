@@ -66,7 +66,10 @@ public class JokeFacade {
 
             }
         } catch (Exception e) {
+            System.out.println("Error in fetchData");
             e.printStackTrace();
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
         return null;
     }
