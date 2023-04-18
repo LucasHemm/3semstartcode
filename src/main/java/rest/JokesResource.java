@@ -22,6 +22,7 @@ public class JokesResource {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final JokeFacade FACADE =  JokeFacade.getJokeFacade(EMF);
 
+    //push
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getJoke() throws Exception {
