@@ -26,6 +26,7 @@ public class JokesResource {
     @Produces({MediaType.APPLICATION_JSON})
     public Response getJoke() throws Exception {
         ChuckDTO chuckDTO = FACADE.createChuckDTO(FACADE.fetchData("https://api.chucknorris.io/jokes/random"));
+        System.out.println(chuckDTO);
         DadDTO dadDTO = FACADE.createDadDTo(FACADE.fetchData("https://icanhazdadjoke.com/"));
         MyJokeDTO myJokeDTO = new MyJokeDTO(chuckDTO,dadDTO);
         return Response.ok().entity(myJokeDTO).build();
