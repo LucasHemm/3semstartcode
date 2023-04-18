@@ -25,15 +25,10 @@ public class JokesResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public Response getJoke() throws Exception {
-        System.out.println("CHECK");
-
-//        ChuckDTO chuckDTO = FACADE.createChuckDTO(FACADE.fetchData("https://api.chucknorris.io/jokes/random"));
-//        System.out.println(chuckDTO);
-//        DadDTO dadDTO = FACADE.createDadDTo(FACADE.fetchData("https://icanhazdadjoke.com/"));
-//        MyJokeDTO myJokeDTO = new MyJokeDTO(chuckDTO,dadDTO);
-        String test = FACADE.fetchData("https://api.kanye.rest/");
-
-        return Response.ok().entity(test).build();
+        DadDTO dadDTO = FACADE.createDadDTo(FACADE.fetchData("https://icanhazdadjoke.com/"));
+        ChuckDTO chuckDTO = FACADE.createChuckDTO(FACADE.fetchData("https://api.chucknorris.io/jokes/random"));
+        MyJokeDTO myJokeDTO = new MyJokeDTO(chuckDTO,dadDTO);
+        return Response.ok().entity(myJokeDTO).build();
 
     }
 }

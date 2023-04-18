@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 
 
@@ -26,10 +25,10 @@ public class JokeFacade {
 
     //Private Constructor to ensure Singleton
     private JokeFacade() {}
-
-
+    
+    
     /**
-     *
+     * 
      * @param _emf
      * @return an instance of this facade class.
      */
@@ -69,6 +68,8 @@ public class JokeFacade {
             throw new IOException("Failed to fetch data from API. Response code: " + responseCode);
         }
     }
+
+
 //little comment
     public DadDTO createDadDTo(String input){
         return GSON.fromJson(input,DadDTO.class);

@@ -5,14 +5,13 @@
  */
 package utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dtos.RenameMeDTO;
+
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import java.util.Set;
-import com.google.gson.*;
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
